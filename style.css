@@ -1,122 +1,148 @@
+/* Knowsera Modern Theme */
+:root {
+    --primary-teal: #1a5254; /* Darker teal from logo text */
+    --accent-teal: #26a69a;
+    --bg-gradient: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
 }
 
 body {
-    background-color: #e8f5e9; /* Light green background from image */
+    background: var(--bg-gradient);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    min-height: 100vh;
+    align-items: center;
 }
 
 .app-container {
     width: 100%;
-    max-width: 400px;
-    background-color: #e8f5e9;
-    padding: 20px;
+    max-width: 420px;
+    height: 90vh;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow);
+    overflow: hidden;
     position: relative;
-    padding-bottom: 80px;
 }
 
-header {
-    margin-top: 20px;
+/* Header & Search */
+header h1 {
+    color: var(--primary-teal);
+    font-size: 2.2rem;
+    margin: 25px 0;
+    font-weight: 700;
 }
 
 .search-bar {
-    background: white;
-    padding: 10px 20px;
-    border-radius: 30px;
+    background: var(--card-bg);
+    padding: 12px 20px;
+    border-radius: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border: 1px solid white;
 }
 
 .brand-name {
-    color: #2d5a4c;
-    font-weight: bold;
-    font-size: 1.2rem;
+    color: var(--primary-teal);
+    font-weight: 800;
+    letter-spacing: 1px;
 }
 
-.input-wrapper {
-    display: flex;
-    align-items: center;
-}
-
-input {
+.search-bar input {
+    background: transparent;
     border: none;
     outline: none;
-    width: 100px;
-    margin-right: 5px;
+    padding-left: 10px;
+    color: var(--primary-teal);
 }
 
-header h1 {
-    color: #2d5a4c;
-    margin-top: 40px;
-    margin-bottom: 30px;
-    font-size: 2.5rem;
-}
-
-/* Menu Grid */
+/* Grid Layout */
 .menu-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 15px;
+    flex-grow: 1;
 }
 
 .menu-item {
-    aspect-ratio: 1/1;
-    border-radius: 25px;
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color: #2d5a4c;
-    font-weight: bold;
-    font-size: 1.2rem;
-    transition: transform 0.2s;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.menu-item:active {
-    transform: scale(0.95);
+.menu-item:hover {
+    transform: translateY(-10px);
+    background: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .menu-item i {
-    font-size: 3rem;
-    margin-bottom: 15px;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
 
-/* Colors from image */
-.blue-light { background-color: #e1f5fe; color: #4fc3f7; }
-.blue-dark { background-color: #e1f5fe; color: #64b5f6; } /* Matching the news icon */
-.orange { background-color: #fff3e0; color: #ffb74d; }
-.green { background-color: #e0f2f1; color: #4db6ac; }
+/* Specific Colors for Icons */
+.blue-light i { color: #03a9f4; }
+.blue-dark i { color: #3f51b5; }
+.orange i { color: #ff9800; }
+.green i { color: #4caf50; }
 
-/* Bottom Nav */
+.menu-item span {
+    color: var(--primary-teal);
+    font-weight: 600;
+}
+
+/* Floating Bottom Navigation */
 .bottom-nav {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 360px;
-    background: white;
-    padding: 15px;
-    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    height: 65px;
+    border-radius: 25px;
     display: flex;
     justify-content: space-around;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    align-items: center;
+    margin-top: 15px;
 }
 
 .bottom-nav a {
-    color: #b0bec5;
-    font-size: 1.4rem;
+    color: #90a4ae;
+    font-size: 1.2rem;
+    transition: 0.3s;
 }
 
 .bottom-nav a.active {
-    color: #2d5a4c;
+    color: var(--accent-teal);
+    transform: scale(1.2);
+}
+
+/* Animation for smooth entrance */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.menu-item {
+    animation: fadeIn 0.5s ease forwards;
 }
