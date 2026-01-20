@@ -1,148 +1,183 @@
-/* Knowsera Modern Theme */
+/* Knowsera Master Theme - 2026 Edition */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 :root {
-    --primary-teal: #1a5254; /* Darker teal from logo text */
+    --primary-teal: #1a5254; 
     --accent-teal: #26a69a;
-    --bg-gradient: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
-    --card-bg: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.4);
-    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    --text-dark: #2d3436;
+    --bg-gradient: linear-gradient(160deg, #e0f2f1 0%, #ffffff 100%);
+    --glass-white: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    -webkit-tap-highlight-color: transparent; /* Mobile touch highlight remove */
 }
 
 body {
     background: var(--bg-gradient);
+    background-attachment: fixed;
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0;
+    color: var(--text-dark);
 }
 
+/* App Wrapper */
 .app-container {
     width: 100%;
-    max-width: 420px;
-    height: 90vh;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 30px;
+    max-width: 450px; /* Standard Mobile width */
+    min-height: 100vh;
+    background: transparent;
     padding: 25px;
+    position: relative;
     display: flex;
     flex-direction: column;
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    position: relative;
 }
 
-/* Header & Search */
-header h1 {
-    color: var(--primary-teal);
-    font-size: 2.2rem;
-    margin: 25px 0;
-    font-weight: 700;
+/* Header & Search Bar */
+header {
+    margin-bottom: 30px;
+    animation: fadeIn 0.8s ease-out;
 }
 
 .search-bar {
-    background: var(--card-bg);
+    background: var(--glass-white);
+    backdrop-filter: blur(10px);
     padding: 12px 20px;
     border-radius: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid white;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
 }
 
 .brand-name {
     color: var(--primary-teal);
-    font-weight: 800;
-    letter-spacing: 1px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
 }
 
 .search-bar input {
     background: transparent;
     border: none;
     outline: none;
-    padding-left: 10px;
+    flex-grow: 1;
+    padding: 0 15px;
     color: var(--primary-teal);
 }
 
-/* Grid Layout */
-.menu-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    flex-grow: 1;
+header h1 {
+    font-size: 2rem;
+    color: var(--primary-teal);
+    margin-top: 35px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
-.menu-item {
-    background: var(--card-bg);
+/* Grid Layout for Index & Coding Pages */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 10px;
+}
+
+.menu-item, .lang-card {
+    background: var(--glass-white);
     border: 1px solid var(--glass-border);
-    border-radius: 20px;
+    border-radius: 24px;
+    padding: 25px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: var(--shadow-soft);
 }
 
-.menu-item:hover {
-    transform: translateY(-10px);
-    background: white;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+.menu-item:hover, .lang-card:hover {
+    transform: translateY(-8px);
+    background: #ffffff;
+    box-shadow: 0 15px 35px rgba(26, 82, 84, 0.15);
 }
 
-.menu-item i {
+/* Icons styling */
+.menu-item i, .icon-box i {
     font-size: 2.5rem;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
-/* Specific Colors for Icons */
-.blue-light i { color: #03a9f4; }
-.blue-dark i { color: #3f51b5; }
-.orange i { color: #ff9800; }
-.green i { color: #4caf50; }
+/* Color Palette for Icons (Applying to both pages) */
+.blue-light i, .python i { color: #3776ab; }
+.orange i, .js i { color: #f7df1e; }
+.blue-dark i, .java i { color: #ed8b00; }
+.green i, .cpp i { color: #00599c; }
+.web i { color: #e34f26; }
 
-.menu-item span {
+.menu-item span, .lang-card span {
     color: var(--primary-teal);
     font-weight: 600;
+    font-size: 1rem;
 }
 
 /* Floating Bottom Navigation */
 .bottom-nav {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(5px);
-    height: 65px;
-    border-radius: 25px;
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    max-width: 380px;
+    background: var(--primary-teal);
+    height: 70px;
+    border-radius: 35px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    z-index: 100;
 }
 
 .bottom-nav a {
-    color: #90a4ae;
-    font-size: 1.2rem;
-    transition: 0.3s;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.4rem;
+    transition: 0.3s ease;
 }
 
 .bottom-nav a.active {
-    color: var(--accent-teal);
+    color: #ffffff;
     transform: scale(1.2);
 }
 
-/* Animation for smooth entrance */
+/* Smooth Animations */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 .menu-item {
-    animation: fadeIn 0.5s ease forwards;
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Extra decorative circles for theme feel */
+.app-container::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: rgba(38, 166, 154, 0.1);
+    border-radius: 50%;
+    z-index: -1;
 }
